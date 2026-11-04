@@ -153,6 +153,8 @@ def info(vid):
         return hs, j.get("duration"), j.get("title") or "", j.get("live_status") or ""
     except Exception:
         return [], None, "", ""
+
+        
         def notify(vid, title, name):
     hs, dur, _, st = info(vid)
     if len(TITLES) > 300:
