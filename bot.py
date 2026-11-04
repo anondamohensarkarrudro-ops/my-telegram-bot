@@ -152,10 +152,11 @@ def info(vid):
         hs = sorted({f["height"] for f in j.get("formats", []) if f.get("height") and f.get("vcodec") != "none"})
         return hs, j.get("duration"), j.get("title") or "", j.get("live_status") or ""
     except Exception:
+        return [], None, "", "    except Exception:
         return [], None, "", ""
 
-        
-        def notify(vid, title, name):
+
+def notify(vid, title, name):
     hs, dur, _, st = info(vid)
     if len(TITLES) > 300:
         TITLES.pop(next(iter(TITLES)))
@@ -183,6 +184,7 @@ def info(vid):
         if not sent:
             say(cap, chat, kb)
     return st
+
 
 def split(path):
     size = os.path.getsize(path)
