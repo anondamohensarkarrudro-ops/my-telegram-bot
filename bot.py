@@ -393,7 +393,8 @@ def handle(text):
             say("ব্যবহার: /quality 360, 480, 720 বা 1080")
             return
         D["quality"] = int(arg)
-        save()Q.put(("backup",))
+        save()
+        Q.put(("backup",))
         say(f"🎞 কোয়ালিটি এখন {arg}p।")
     elif cmd == "/queue":
         jobs = [describe(j) for j in list(Q.queue) if j[0] != "backup"]
