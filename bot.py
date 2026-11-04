@@ -151,8 +151,8 @@ def info(vid):
         j = json.loads(r.stdout)
         hs = sorted({f["height"] for f in j.get("formats", []) if f.get("height") and f.get("vcodec") != "none"})
         return hs, j.get("duration"), j.get("title") or "", j.get("live_status") or ""
+        return hs, j.get("duration"), j.get("title") or "", j.get("live_status") or ""
     except Exception:
-        return [], None, "", "    except Exception:
         return [], None, "", ""
 
 
