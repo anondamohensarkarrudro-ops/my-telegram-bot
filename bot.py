@@ -151,7 +151,6 @@ def info(vid):
         j = json.loads(r.stdout)
         hs = sorted({f["height"] for f in j.get("formats", []) if f.get("height") and f.get("vcodec") != "none"})
         return hs, j.get("duration"), j.get("title") or "", j.get("live_status") or ""
-        return hs, j.get("duration"), j.get("title") or "", j.get("live_status") or ""
     except Exception:
         return [], None, "", ""
 
@@ -184,8 +183,6 @@ def notify(vid, title, name):
         if not sent:
             say(cap, chat, kb)
     return st
-
-
 def split(path):
     size = os.path.getsize(path)
     if size <= LIMIT:
