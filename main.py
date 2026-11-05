@@ -616,7 +616,7 @@ def process(vid, title, name, announce=False, quality=None, audio=False, prefix=
         else:
             fmt = (f"bv*[height<={qh}][ext=mp4]+ba[ext=m4a]/bv*[height<={qh}]+ba/b[height<={qh}]/bv*+ba/b")
         extra = {"format": fmt, "outtmpl": os.path.join(workdir, vid + ".%(ext)s"), "progress_hooks": [prog],
-                 "noprogress": True, "concurrent_fragment_downloads": 4, "quiet": False, "no_warnings": False}
+                                  "noprogress": True, "concurrent_fragment_downloads": 4}
         if audio:
             extra["postprocessors"] = [{"key": "FFmpegExtractAudio", "preferredcodec": "mp3", "preferredquality": "192"}]
         else:
