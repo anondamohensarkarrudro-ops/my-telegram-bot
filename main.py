@@ -25,8 +25,10 @@ def home():
     return "alive"
 threading.Thread(target=lambda: app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000))), daemon=True).start()
 
-client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
-client.start()
+client = TelegramClient(StringSession(SESSION.strip()), API_ID, API_HASH)
+client.loop.run_until_complete(client.connect())
+if not client.loop.run_until_complete(client.is_user_authorized()):
+    raise SystemExit("SESSION ফাঁকা বা অবৈধ। নতুন StringSession বানিয়ে Render Environment-এ SESSION দিন।")
 client.loop.run_until_complete(client.get_dialogs())
 
 lock = threading.Lock()
