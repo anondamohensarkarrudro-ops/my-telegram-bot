@@ -1,4 +1,4 @@
-yt-dlp
-telethon
 flask
-deno
+waitress
+telethon
+yt-dlp[default]
