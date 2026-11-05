@@ -87,7 +87,7 @@ print("COOKIES:", "পাওয়া গেছে" if COOKIES_SRC else "পা�
 def ytdl(quiet=True, **extra):
     """প্রতিবার আলাদা কুকি-কপি দিয়ে yt-dlp চালায় (থ্রেডের মধ্যে ফাইল নষ্ট হওয়া ঠেকাতে)।"""
     opts = {"quiet": quiet, "no_warnings": quiet, "noplaylist": True, "retries": 5, "fragment_retries": 10,
-            "socket_timeout": 30, "remote_components": ["ejs:github"]}
+                        "socket_timeout": 30, "remote_components": ["ejs:github"], "js_runtimes": {"node": {}}}
     ck = None
     if COOKIES_SRC:
         ck = f"/tmp/yt_ck_{threading.get_ident()}_{time.time_ns()}.txt"
